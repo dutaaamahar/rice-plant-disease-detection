@@ -29,7 +29,7 @@ def main():
         # Button for prediction
         if st.button("Predict"):
             # Preprocess the image
-            img = tf.keras.utils.load_img(uploaded_file, target_size=(300, 300))
+            img = tf.keras.utils.load_img(uploaded_file, target_size=(150, 150))
             x = tf.keras.utils.img_to_array(img)
             x /= 255
             x = np.expand_dims(x, axis=0)
@@ -40,9 +40,14 @@ def main():
 
             # Assuming model output shape is (1, 4) for the 4 classes
             predicted_label = class_labels[np.argmax(classes[0])]
+            predicted_proba = classes[0][np.argmax(classes[0])]
 
             st.write("## Prediction:")
-            st.write(f"The image is classified as: {predicted_label} with confidence: {classes[0][np.argmax(classes[0])]}")
+            st.write(f"The image is classified as: {predicted_label} with confidence: {predicted_proba:.2f}")
+
+            st.write("## Prediction Probabilities:")
+            for label, proba in zip(class_labels, classes[0]):
+                st.write(f"{label}: {proba:.2f}")
 
 if __name__=='__main__':
     main()
