@@ -38,7 +38,7 @@ streamlit run app.py
 
 ## Project Structure
 
-- `rice-plant-disease-detection/` : This directory is designated for handling the Web App components within the Streamlit project named `ai-digital-sales-tracking`.
+- `rice-plant-disease-detection/` : This directory is designated for handling the Web App components within the Streamlit project named `rice-plant-disease-detection`.
 
 - `STREAMLIT-APP/` : This is the main directory for our Streamlit Web App dedicated to Rice Plant Disease Detection. It likely contains the core components and configurations for the entire feature.
 
