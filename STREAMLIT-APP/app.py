@@ -5,17 +5,21 @@ import tensorflow as tf
 from PIL import Image
 
 # Load the pre-trained model
-model_path = os.path.join(os.path.dirname(__file__), 'models', 'saved_model.h5')
+model_path = os.path.join(os.path.dirname(__file__), 'models', 'saved_model_256_9010.h5')
 model = tf.keras.models.load_model(model_path)
 
 # Mapping index to class labels
-class_labels = ['Bacterialblight', 'Blast', 'Brownspot', 'Tungro']
+class_labels = ['Bacterialblight', 'Blast', 'Brownspot', 'Tungro', 'Unknown']
 
 # Streamlit app
 def main():
     st.write("""
         # Identifikasi Penyakit pada Tanaman Padi menggunakan Metode Convolutional Neural Network
-        Tugas Akhir ini dibuat sebagai syarat dalam menyelesaikan Program Studi Strata Satu (S-1) Program Studi Teknik Informatika
+        *Web App* ini dibuat sebagai syarat dalam menyelesaikan Program Studi Strata Satu (S-1)
+        Program Studi Teknik Informatika. Web App ini dapat mengidentifikasi 4 jenis penyakit pada
+        tanaman padi yaitu *Bacterial Blight*, *Blast*, *Brown Spot*, dan *Tungro*. Pengguna dapat 
+        mengunggah gambar penyakit tanaman padi yang ingin diidentifikasi dengan format .jpg, .jpeg,
+        dan .png dengan ukuran maksimal 200MB.
         """
     )
 
@@ -38,7 +42,7 @@ def main():
             # Make predictions
             classes = model.predict(images, batch_size=10)
 
-            # Assuming model output shape is (1, 4) for the 4 classes
+            # Assuming model output shape is (1, 5) for the 5 classes
             predicted_label = class_labels[np.argmax(classes[0])]
             predicted_proba = classes[0][np.argmax(classes[0])]
 
