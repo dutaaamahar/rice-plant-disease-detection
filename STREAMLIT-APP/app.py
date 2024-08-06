@@ -17,9 +17,9 @@ def main():
         # Identifikasi Penyakit pada Tanaman Padi menggunakan Metode Convolutional Neural Network
         *Web App* ini dibuat sebagai syarat dalam menyelesaikan Program Studi Strata Satu (S-1)
         Program Studi Teknik Informatika. Web App ini dapat mengidentifikasi 4 jenis penyakit pada
-        tanaman padi yaitu *Bacterial Blight*, *Blast*, *Brown Spot*, dan *Tungro*. Pengguna dapat 
-        mengunggah gambar penyakit tanaman padi yang ingin diidentifikasi dengan format .jpg, .jpeg,
-        dan .png dengan ukuran maksimal 200MB.
+        tanaman padi yaitu *Bacterial Blight*, *Blast*, *Brown Spot*, dan *Tungro*, objek diluar keempat
+        penyakit akan diprediksi sebagai *Unknown*. Pengguna dapat mengunggah gambar penyakit tanaman
+        padi yang ingin diidentifikasi dengan format .jpg, .jpeg, dan .png dengan ukuran maksimal 200MB.
         """
     )
 
