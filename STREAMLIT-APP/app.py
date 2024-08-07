@@ -4,7 +4,9 @@ Aplikasi Web Identifikasi Penyakit Tanaman Padi
 Modul ini mengimplementasikan aplikasi web untuk mengidentifikasi penyakit pada
 tanaman padi menggunakan model Convolutional Neural Network (CNN). Aplikasi ini
 memungkinkan pengguna untuk mengunggah gambar penyakit tanaman padi, memproses gambar,
-dan memprediksi jenis penyakit.
+dan memprediksi jenis penyakit. Jika gambar yang diunggah tidak termasuk dalam kategori 
+penyakit yang dikenal, maka hasil prediksi akan menunjukkan bahwa gambar tersebut tidak 
+mengandung penyakit tanaman padi.
 """
 
 import os
@@ -61,11 +63,14 @@ def main():
             predicted_proba = classes[0][np.argmax(classes[0])]
 
             st.write("## Prediction:")
-            st.write(f"The image is classified as: {predicted_label} with confidence: "
-                     f"{predicted_proba:.2f}")
+            if predicted_label == 'Unknown':
+                st.write("This image does not include rice plant diseases.")
+            else:
+                st.write(f"The image is classified as: {predicted_label} with confidence: "
+                         f"{predicted_proba:.2f}")
 
             st.write("## Prediction Probabilities:")
-            for label, proba in zip(class_labels, classes[0]):
+            for label, proba in zip(class_labels[:-1], classes[0][:-1]):
                 st.write(f"{label}: {proba:.2f}")
 
 if __name__ == '__main__':
